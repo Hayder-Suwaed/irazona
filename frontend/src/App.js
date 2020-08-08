@@ -14,7 +14,7 @@ function App() {
     <div className="grid-container">
       <header className="header">
         <div className="brand">
-          <button onclick={openMenu}>&#9776;</button>
+          <button onClick={openMenu}>&#9776;</button>
           <a href="index.html">Irazon</a>
         </div>
         <div className="header-links">
@@ -24,7 +24,7 @@ function App() {
       </header>
       <aside className="sidebar">
         <h3>Shopping Categories</h3>
-        <button className="sidebar-close-button" onclick={closeMenu}>
+        <button className="sidebar-close-button" onClick={closeMenu}>
           x
         </button>
         <ul>
