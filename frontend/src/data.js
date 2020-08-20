@@ -1,7 +1,7 @@
 export default  {
     products: [{
         _id:'1',
-        name: 'Slim shirt',
+        name: 'Slim Shirt',
         category: 'Shirts',
         image: '/images/d1.jpg',
         price: 60,
@@ -11,7 +11,7 @@ export default  {
     },
     {
         _id: '2',
-        name: 'Fit shirt',
+        name: 'Fit Shirt',
         category: 'Shirts',
         image: '/images/d1.jpg',
         price: 50,

@@ -1,12 +1,38 @@
-import React from 'react';
-import data from '../data';
-
+import React from "react";
+import { Link } from "react-router-dom";
+import data from "../data";
 
 function ProductScreen(props) {
-    const product = data.products.find(x => x._id === props.match.params.id)
-    return <div>
-        <h1>{product.name}</h1>
+  const product = data.products.find((x) => x._id === props.match.params.id);
+  return (
+    <div>
+      <div>
+        <Link to="/">Back to result</Link>
+      </div>
+      <div className="details">
+        <div className="details-iamge">
+          <img src={product.image} alt="product"></img>
+        </div>
+        <div className="details-info">
+          <ul>
+            <li>
+              <h4>{product.name}</h4>
+            </li>
+            <li>
+              {product.rating} Stars ({product.numReviews} Reviews)
+            </li>
+            <li>
+              <b>{product.price}</b>
+            </li>
+            <li>
+            Description:
+              <div>{product.description}</div>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
+  );
 }
 
 export default ProductScreen;
