@@ -10,6 +10,8 @@ var _config = _interopRequireDefault(require("./config"));
 
 var _mongoose = _interopRequireDefault(require("mongoose"));
 
+var _userRoute = _interopRequireDefault(require("./routes/userRoute"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 _dotenv["default"].config();
@@ -17,12 +19,15 @@ _dotenv["default"].config();
 var mongodbUrl = _config["default"].MONGODB_URL;
 
 _mongoose["default"].connect(mongodbUrl, {
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true
 })["catch"](function (error) {
   return console.log(error.reason);
 });
 
 var app = (0, _express["default"])();
+app.use("/api/users", _userRoute["default"]);
 app.get("/api/products/:id", function (req, res) {
   var productId = req.params.id;
 
@@ -38,5 +43,5 @@ app.get("/api/products", function (req, res) {
   res.send(_data["default"].products);
 });
 app.listen(5000, function () {
-  return console.log("Server started at http://localhost:5000");
+  console.log("Server started at http://localhost:5000");
 });
