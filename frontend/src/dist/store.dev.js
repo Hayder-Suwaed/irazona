@@ -13,9 +13,9 @@ var _jsCookie = _interopRequireDefault(require("js-cookie"));
 
 var _productReducers = require("./reducers/productReducers");
 
-var _userReducers = require("./reducers/userReducers");
-
 var _cartReducers = require("./reducers/cartReducers");
+
+var _userReducers = require("./reducers/userReducers");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 

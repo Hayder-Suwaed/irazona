@@ -43,7 +43,7 @@ var signin = function signin(email, password) {
               payload: data
             });
 
-            _jsCookie["default"].set('userInfo', JSON.stringify(data));
+            _jsCookie["default"].set("userInfo", JSON.stringify(data));
 
             _context.next = 13;
             break;
@@ -99,7 +99,7 @@ var register = function register(name, email, password) {
               payload: data
             });
 
-            _jsCookie["default"].set('userInfo', JSON.stringify(data));
+            _jsCookie["default"].set("userInfo", JSON.stringify(data));
 
             _context2.next = 13;
             break;
