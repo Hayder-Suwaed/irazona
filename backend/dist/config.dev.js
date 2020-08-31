@@ -5,6 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 var _default = {
-  MONGODB_URL: process.env.MONGODB_URL || 'mongodb://localhost/irazoa'
+  MONGODB_URL: process.env.MONGODB_URL || "mongodb://localhost/irazoa",
+  JWT_SECRET: process.env.JWT_SECRET || "somethingsecret"
 };
 exports["default"] = _default;
