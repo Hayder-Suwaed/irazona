@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.removeFromCart = exports.addToCart = void 0;
+exports.savePayment = exports.saveShipping = exports.removeFromCart = exports.addToCart = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
 
@@ -76,3 +76,25 @@ var removeFromCart = function removeFromCart(productId) {
 };
 
 exports.removeFromCart = removeFromCart;
+
+var saveShipping = function saveShipping(data) {
+  return function (dispatch) {
+    dispatch({
+      type: _cartConstants.CART_SAVE_SHIPPING,
+      payload: data
+    });
+  };
+};
+
+exports.saveShipping = saveShipping;
+
+var savePayment = function savePayment(data) {
+  return function (dispatch) {
+    dispatch({
+      type: _cartConstants.CART_SAVE_PAYMENT,
+      payload: data
+    });
+  };
+};
+
+exports.savePayment = savePayment;

@@ -23,7 +23,9 @@ var cartItems = _jsCookie["default"].getJSON("cartItems") || [];
 var userInfo = _jsCookie["default"].getJSON("userInfo") || null;
 var initialState = {
   cart: {
-    cartItems: cartItems
+    cartItems: cartItems,
+    shipping: {},
+    payment: {}
   },
   userSignin: {
     userInfo: userInfo

@@ -35,21 +35,52 @@ router.get("/", function _callee(req, res) {
     }
   });
 });
-router.put("/:id", _util.isAuth, _util.isAdmin, function _callee2(req, res) {
-  var productId, product, updatedProduct;
+router.get("/:id", function _callee2(req, res) {
+  var products;
   return regeneratorRuntime.async(function _callee2$(_context2) {
     while (1) {
       switch (_context2.prev = _context2.next) {
         case 0:
+          _context2.next = 2;
+          return regeneratorRuntime.awrap(_productModel["default"].findOne({
+            _id: req.params.id
+          }));
+
+        case 2:
+          products = _context2.sent;
+
+          if (product) {
+            res.send(product);
+          } else {
+            res.status(404).send({
+              message: "Product not found."
+            });
+          }
+
+          res.send(products);
+
+        case 5:
+        case "end":
+          return _context2.stop();
+      }
+    }
+  });
+});
+router.put("/:id", _util.isAuth, _util.isAdmin, function _callee3(req, res) {
+  var productId, product, updatedProduct;
+  return regeneratorRuntime.async(function _callee3$(_context3) {
+    while (1) {
+      switch (_context3.prev = _context3.next) {
+        case 0:
           productId = req.params.id;
-          _context2.next = 3;
+          _context3.next = 3;
           return regeneratorRuntime.awrap(_productModel["default"].findById(productId));
 
         case 3:
-          product = _context2.sent;
+          product = _context3.sent;
 
           if (!product) {
-            _context2.next = 17;
+            _context3.next = 17;
             break;
           }
 
@@ -60,59 +91,59 @@ router.put("/:id", _util.isAuth, _util.isAdmin, function _callee2(req, res) {
           product.category = req.body.category;
           product.countInStock = req.body.countInStock;
           product.description = req.body.description;
-          _context2.next = 14;
+          _context3.next = 14;
           return regeneratorRuntime.awrap(product.save());
 
         case 14:
-          updatedProduct = _context2.sent;
+          updatedProduct = _context3.sent;
 
           if (!updatedProduct) {
-            _context2.next = 17;
+            _context3.next = 17;
             break;
           }
 
-          return _context2.abrupt("return", res.status(200).send({
-            message: 'Product Updated',
+          return _context3.abrupt("return", res.status(200).send({
+            message: "Product Updated",
             data: updatedProduct
           }));
 
         case 17:
-          return _context2.abrupt("return", res.status(500).send({
-            message: ' Error in Updating Product.'
+          return _context3.abrupt("return", res.status(500).send({
+            message: " Error in Updating Product."
           }));
 
         case 18:
         case "end":
-          return _context2.stop();
+          return _context3.stop();
       }
     }
   });
 });
-router["delete"]("/:id", _util.isAuth, _util.isAdmin, function _callee3(req, res) {
+router["delete"]("/:id", _util.isAuth, _util.isAdmin, function _callee4(req, res) {
   var deletedProduct;
-  return regeneratorRuntime.async(function _callee3$(_context3) {
+  return regeneratorRuntime.async(function _callee4$(_context4) {
     while (1) {
-      switch (_context3.prev = _context3.next) {
+      switch (_context4.prev = _context4.next) {
         case 0:
-          _context3.next = 2;
+          _context4.next = 2;
           return regeneratorRuntime.awrap(_productModel["default"].findById(req.params.id));
 
         case 2:
-          deletedProduct = _context3.sent;
+          deletedProduct = _context4.sent;
 
           if (!deletedProduct) {
-            _context3.next = 9;
+            _context4.next = 9;
             break;
           }
 
-          _context3.next = 6;
+          _context4.next = 6;
           return regeneratorRuntime.awrap(deletedProduct.remove());
 
         case 6:
           res.send({
             message: "Product Deleted"
           });
-          _context3.next = 10;
+          _context4.next = 10;
           break;
 
         case 9:
@@ -120,16 +151,16 @@ router["delete"]("/:id", _util.isAuth, _util.isAdmin, function _callee3(req, res
 
         case 10:
         case "end":
-          return _context3.stop();
+          return _context4.stop();
       }
     }
   });
 });
-router.post("/", _util.isAuth, _util.isAdmin, function _callee4(req, res) {
+router.post("/", _util.isAuth, _util.isAdmin, function _callee5(req, res) {
   var product, newProduct;
-  return regeneratorRuntime.async(function _callee4$(_context4) {
+  return regeneratorRuntime.async(function _callee5$(_context5) {
     while (1) {
-      switch (_context4.prev = _context4.next) {
+      switch (_context5.prev = _context5.next) {
         case 0:
           product = new _productModel["default"]({
             name: req.body.name,
@@ -142,30 +173,30 @@ router.post("/", _util.isAuth, _util.isAdmin, function _callee4(req, res) {
             rating: req.body.rating,
             numReviews: req.body.numReviews
           });
-          _context4.next = 3;
+          _context5.next = 3;
           return regeneratorRuntime.awrap(product.save());
 
         case 3:
-          newProduct = _context4.sent;
+          newProduct = _context5.sent;
 
           if (!newProduct) {
-            _context4.next = 6;
+            _context5.next = 6;
             break;
           }
 
-          return _context4.abrupt("return", res.status(201).send({
-            message: 'New Product Created',
+          return _context5.abrupt("return", res.status(201).send({
+            message: "New Product Created",
             data: newProduct
           }));
 
         case 6:
-          return _context4.abrupt("return", res.status(500).send({
-            message: ' Error in Creating Product.'
+          return _context5.abrupt("return", res.status(500).send({
+            message: " Error in Creating Product."
           }));
 
         case 7:
         case "end":
-          return _context4.stop();
+          return _context5.stop();
       }
     }
   });
