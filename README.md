@@ -54,4 +54,4 @@ Also, I will love to hear your comment about this React and Node tutorial. Pleas
 
 ## Placeholder screen
 
-[Placeholder](https://github.com/Hayder-Suwaed/irazona/blob/master/frontend/public/images/Placeholder.PNG)
+![Placeholder](https://github.com/Hayder-Suwaed/irazona/blob/master/frontend/public/images/Placeholder.PNG)
