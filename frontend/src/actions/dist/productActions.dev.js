@@ -5,19 +5,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.deleteProdcut = exports.saveProduct = exports.detailsProduct = exports.listProducts = void 0;
 
-var _axios = _interopRequireDefault(require("axios"));
-
 var _productConstants = require("../constants/productConstants");
 
+var _axios = _interopRequireDefault(require("axios"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-var _require = require("axios"),
-    Axios = _require["default"];
-
-var _require2 = require("../constants/productConstants"),
-    PRODUCT_LIST_REQUEST = _require2.PRODUCT_LIST_REQUEST,
-    PRODUCT_LIST_SUCCESS = _require2.PRODUCT_LIST_SUCCESS,
-    PRODUCT_LIST_FAIL = _require2.PRODUCT_LIST_FAIL;
 
 var listProducts = function listProducts() {
   return function _callee(dispatch) {
@@ -29,16 +21,16 @@ var listProducts = function listProducts() {
           case 0:
             _context.prev = 0;
             dispatch({
-              type: PRODUCT_LIST_REQUEST
+              type: _productConstants.PRODUCT_LIST_REQUEST
             });
             _context.next = 4;
-            return regeneratorRuntime.awrap(Axios.get("/api/products"));
+            return regeneratorRuntime.awrap(_axios["default"].get("/api/products"));
 
           case 4:
             _ref = _context.sent;
             data = _ref.data;
             dispatch({
-              type: PRODUCT_LIST_SUCCESS,
+              type: _productConstants.PRODUCT_LIST_SUCCESS,
               payload: data
             });
             _context.next = 12;
@@ -48,7 +40,7 @@ var listProducts = function listProducts() {
             _context.prev = 9;
             _context.t0 = _context["catch"](0);
             dispatch({
-              type: PRODUCT_LIST_FAIL,
+              type: _productConstants.PRODUCT_LIST_FAIL,
               payload: _context.t0.message
             });
 
@@ -84,7 +76,7 @@ var saveProduct = function saveProduct(product) {
             }
 
             _context2.next = 6;
-            return regeneratorRuntime.awrap(Axios.post('/api/products', product, {
+            return regeneratorRuntime.awrap(_axios["default"].post('/api/products', product, {
               headers: {
                 'Authorization': 'Bearer ' + userInfo.token
               }
@@ -102,7 +94,7 @@ var saveProduct = function saveProduct(product) {
 
           case 11:
             _context2.next = 13;
-            return regeneratorRuntime.awrap(Axios.put('/api/products/' + product._id, product, {
+            return regeneratorRuntime.awrap(_axios["default"].put('/api/products/' + product._id, product, {
               headers: {
                 'Authorization': 'Bearer ' + userInfo.token
               }
@@ -169,8 +161,8 @@ var detailsProduct = function detailsProduct(productId) {
             _context3.prev = 9;
             _context3.t0 = _context3["catch"](0);
             dispatch({
-              type: PRODUCT_LIST_FAIL,
-              payoad: _context3.t0.message
+              type: _productConstants.PRODUCT_DETAILS_FAIL,
+              payload: _context3.t0.message
             });
 
           case 12:

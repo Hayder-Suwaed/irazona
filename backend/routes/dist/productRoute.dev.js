@@ -72,13 +72,13 @@ router.put("/:id", _util.isAuth, _util.isAdmin, function _callee2(req, res) {
           }
 
           return _context2.abrupt("return", res.status(200).send({
-            message: "Product Updated",
+            message: 'Product Updated',
             data: updatedProduct
           }));
 
         case 17:
           return _context2.abrupt("return", res.status(500).send({
-            message: " Error in Updating Product."
+            message: ' Error in Updating Product.'
           }));
 
         case 18:
@@ -154,13 +154,13 @@ router.post("/", _util.isAuth, _util.isAdmin, function _callee4(req, res) {
           }
 
           return _context4.abrupt("return", res.status(201).send({
-            message: "New Product Created",
+            message: 'New Product Created',
             data: newProduct
           }));
 
         case 6:
           return _context4.abrupt("return", res.status(500).send({
-            message: " Error in Creating Product."
+            message: ' Error in Creating Product.'
           }));
 
         case 7:

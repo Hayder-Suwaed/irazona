@@ -2,8 +2,6 @@
 
 var _express = _interopRequireDefault(require("express"));
 
-var _data = _interopRequireDefault(require("./data"));
-
 var _dotenv = _interopRequireDefault(require("dotenv"));
 
 var _config = _interopRequireDefault(require("./config"));
@@ -13,6 +11,8 @@ var _mongoose = _interopRequireDefault(require("mongoose"));
 var _bodyParser = _interopRequireDefault(require("body-parser"));
 
 var _userRoute = _interopRequireDefault(require("./routes/userRoute"));
+
+var _productRoute = _interopRequireDefault(require("./routes/productRoute"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -31,20 +31,16 @@ _mongoose["default"].connect(mongodbUrl, {
 var app = (0, _express["default"])();
 app.use(_bodyParser["default"].json());
 app.use("/api/users", _userRoute["default"]);
-app.get("/api/products/:id", function (req, res) {
-  var productId = req.params.id;
+app.use("/api/products", _productRoute["default"]); // app.get("/api/products/:id", (req, res) => {
+//   const productId = req.params.id;
+//   const product = data.products.find((x) => x._id === productId);
+//   if (product) res.send(product);
+//   else res.status(404).send({ msg: "Product Not Found." });
+// });
+// app.get("/api/products", (req, res) => {
+//   res.send(data.products);
+// });
 
-  var product = _data["default"].products.find(function (x) {
-    return x._id === productId;
-  });
-
-  if (product) res.send(product);else res.status(404).send({
-    msg: "Product Not Found."
-  });
-});
-app.get("/api/products", function (req, res) {
-  res.send(_data["default"].products);
-});
 app.listen(5000, function () {
   console.log("Server started at http://localhost:5000");
 });

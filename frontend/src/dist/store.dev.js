@@ -34,7 +34,9 @@ var reducer = (0, _redux.combineReducers)({
   productDetails: _productReducers.productDetailsReducer,
   cart: _cartReducers.cartReducer,
   userSignin: _userReducers.userSigninReducer,
-  userRegister: _userReducers.userRegisterReducer
+  userRegister: _userReducers.userRegisterReducer,
+  productSave: _productReducers.productSaveReducer,
+  productDelete: _productReducers.productDeleteReducer
 });
 var composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || _redux.compose;
 var store = (0, _redux.createStore)(reducer, initialState, composeEnhancer((0, _redux.applyMiddleware)(_reduxThunk["default"])));
